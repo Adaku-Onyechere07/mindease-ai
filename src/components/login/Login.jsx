@@ -9,7 +9,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
- e.preventDefault();
+    e.preventDefault();
 
     // Send to backend
     /*
@@ -20,8 +20,12 @@ const Login = () => {
       return;
     }
     */
+   navigate("/chat");
 
-    navigate("/chat");
+    if (email.trim() === "" || password.trim() === "") {
+    alert("Email and Password cannot be empty.");
+    navigate("/");
+  }
 
     setFormData({
       email: "",
@@ -36,7 +40,7 @@ const Login = () => {
   return (
     <div className="login-container">
       <h2 className="login-title">Login</h2>
-      <div className="login-form">
+      <form className="login-form">
         <input
           type="email"
           placeholder="Email"
@@ -69,7 +73,7 @@ const Login = () => {
         <button onClick={handleGuestLogin} className="guest-button">
           Continue as Guest
         </button>
-      </div>
+      </form>
     </div>
   );
 };
