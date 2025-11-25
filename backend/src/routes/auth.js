@@ -61,7 +61,8 @@ router.post('/register', [
     age,
     gender,
     preferredLanguage: preferredLanguage || 'en',
-    timezone: timezone || 'UTC'
+    timezone: timezone || 'UTC',
+    onboardingCompleted: true // Set to true by default for now
   });
 
   await user.save();

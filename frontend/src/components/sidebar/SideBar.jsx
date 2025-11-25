@@ -1,12 +1,19 @@
 import { useState } from "react";
 import { Menu, X, Home, MessageSquare, BookOpen, User } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import './SideBar.css';
 
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const toggleSidebar = () => {
     setOpen(!open);
+  };
+
+  const handleNavigation = (path) => {
+    navigate(path);
+    setOpen(false);
   };
 
   return (
@@ -25,9 +32,26 @@ export default function Sidebar() {
           </div>
 
           <div className="sidebar-menu">
-            <SidebarItem icon={<Home size={24} />} label="Home" onClick={toggleSidebar} />
-            <SidebarItem icon={<MessageSquare size={24} />} label="Chat" onClick={toggleSidebar} />
-            <SidebarItem icon={<User size={24} />} label="Profile" onClick={toggleSidebar} />
+            <SidebarItem 
+              icon={<Home size={24} />} 
+              label="Home" 
+              onClick={() => handleNavigation('/home')} 
+            />
+            <SidebarItem 
+              icon={<MessageSquare size={24} />} 
+              label="Chat" 
+              onClick={() => handleNavigation('/chat')} 
+            />
+            <SidebarItem 
+              icon={<BookOpen size={24} />} 
+              label="Resources" 
+              onClick={() => handleNavigation('/resources')} 
+            />
+            <SidebarItem 
+              icon={<User size={24} />} 
+              label="Profile" 
+              onClick={() => handleNavigation('/profile')} 
+            />
           </div>
         </div>
       </div>

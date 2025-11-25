@@ -1,9 +1,9 @@
 import React from 'react';
-import './Landing.css';
-import Login from '../../components/login/Login';
+import '../landing/Landing.css'; // Reuse landing styles
+import Signup from '../../components/signup/Signup';
 import avatarResting from '../../assets/images/avatarResting.png';
 
-const Landing = () => {
+const SignupPage = () => {
   return (
     <div className="landing-page">
         <div className="landing-content">
@@ -24,7 +24,7 @@ const Landing = () => {
                 </div>
 
                 <div className="right-section">
-                    <Login />
+                    <Signup />
                 </div>
                 </div>
 
@@ -36,4 +36,4 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+export default SignupPage;

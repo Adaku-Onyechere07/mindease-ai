@@ -13,7 +13,7 @@ const router = express.Router();
 // @route   POST /api/chat/sessions
 // @desc    Create a new chat session
 // @access  Private
-router.post('/sessions', auth, requireOnboarding, asyncHandler(async (req, res) => {
+router.post('/sessions', auth, asyncHandler(async (req, res) => {
   const sessionId = uuidv4();
   
   const chatSession = new ChatSession({
@@ -117,7 +117,7 @@ router.get('/sessions/:sessionId', auth, asyncHandler(async (req, res) => {
 // @route   POST /api/chat/sessions/:sessionId/messages
 // @desc    Send message in chat session
 // @access  Private
-router.post('/sessions/:sessionId/messages', auth, requireOnboarding, [
+router.post('/sessions/:sessionId/messages', auth, [
   body('content')
     .trim()
     .isLength({ min: 1, max: 5000 })

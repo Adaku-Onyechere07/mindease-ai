@@ -1,6 +1,7 @@
 import './ChatMessage.css';
 import avatarImage from '../../assets/images/avatar.jpg'
 import aiAvatar from '../../assets/images/aiAvatar.png'
+import ReactMarkdown from 'react-markdown';
 
 export function ChatMessage({ sender, text }) {
   const isUser = sender === "user";
@@ -13,7 +14,7 @@ export function ChatMessage({ sender, text }) {
         </div>
       )}
       <div className={`message-bubble ${isUser ? "user-bubble" : "other-bubble"}`}>
-        {text}
+        <ReactMarkdown>{text}</ReactMarkdown>
       </div>
       {isUser && (
         <div className="avatar">
