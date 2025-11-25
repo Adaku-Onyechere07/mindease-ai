@@ -1,17 +1,36 @@
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
+  const navigate = useNavigate();
 
-  const handleLogin = () => {
-    console.log('Login submitted', { email, password, rememberMe });
+  const handleLogin = async (e) => {
+ e.preventDefault();
+
+    // Send to backend
+    /*
+    try {
+      await axios.post("https://localhost:5000", formData);
+    } catch (error) {
+      console.error("Login failed:", error);
+      return;
+    }
+    */
+
+    navigate("/chat");
+
+    setFormData({
+      email: "",
+      password: ""
+    });
   };
 
   const handleGuestLogin = () => {
-    console.log('Continue as guest');
+    navigate("/chat");
   };
 
   return (

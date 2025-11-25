@@ -1,5 +1,6 @@
 import './ChatMessage.css';
 import avatarImage from '../../assets/images/avatar.jpg'
+import aiAvatar from '../../assets/images/aiAvatar.png'
 
 export function ChatMessage({ sender, text }) {
   const isUser = sender === "user";
@@ -8,7 +9,7 @@ export function ChatMessage({ sender, text }) {
     <div className={`message-container ${isUser ? "user-message" : "other-message"}`}>
       {!isUser && (
         <div className="avatar">
-          <img src={avatarImage} alt="AI" className="avatar-img" />
+          <img src={aiAvatar} alt="AI" className="avatar-img" />
         </div>
       )}
       <div className={`message-bubble ${isUser ? "user-bubble" : "other-bubble"}`}>

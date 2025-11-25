@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-// import { ScrollArea } from "@/components/ui/scroll-area";
 import './ChatPage.css';
 import Navbar from "../../components/navbar/NavBar.jsx";
 import { ChatMessage } from "../../components/chatMessage/ChatMessage.jsx";
@@ -29,24 +28,81 @@ export default function ChatPage() {
   }, [messages]);
 
   return (
-  <>
-    <Navbar />
-    <div className="chat-container">
-      <div className="chat-header">
-        Conversation
-      </div>
-
-      <div className="chat-scroll-area">
-        <div className="chat-messages">
-          {messages.map((m, i) => (
-            <ChatMessage key={i} sender={m.sender} text={m.text} />
-          ))}
-          <div ref={bottomRef} />
+    <div className="chat-page">
+      <Navbar />
+      <div className="chat-container">
+        <div className="chat-header">
+          <h2 className="chat-title">Chat</h2>
+          <div className="chat-status">
+            <span className="status-dot"></span>
+            <span className="status-text">AI Companion Online</span>
+            <div className="avatar-small">
+              
+            </div>
+          </div>
         </div>
+        
+        <div className="chat-messages">
+          {messages.map((msg, index) => (
+            <ChatMessage key={index} sender={msg.sender} text={msg.text} />
+          ))}
+        </div>
+        
+        <ChatInput onSend={handleSend} />
       </div>
-
-      <ChatInput onSend={handleSend} />
     </div>
-  </>
   );
 }
+
+// import { useState } from 'react';
+// import Navbar from '../components/navbar/NavBar';
+// import { ChatMessage } from '../components/chat/ChatMessage';
+// import { ChatInput } from '../components/chat/ChatInput';
+// import './ChatPage.css';
+
+// export default function ChatPage() {
+//   const [messages, setMessages] = useState([
+//     { sender: "ai", text: "Hello! I'm here to listen and support you. How are you feeling today?" }
+//   ]);
+
+//   const handleSendMessage = (text) => {
+//     setMessages([...messages, { sender: "user", text }]);
+//     // Simulate AI response
+//     setTimeout(() => {
+//       setMessages(prev => [...prev, { 
+//         sender: "ai", 
+//         text: "I hear you. Thank you for sharing that with me." 
+//       }]);
+//     }, 1000);
+//   };
+
+//   return (
+//     <div className="chat-page">
+//       <Navbar />
+//       <div className="chat-container">
+//         <div className="chat-header">
+//           <h2 className="chat-title">Chat</h2>
+//           <div className="chat-status">
+//             <span className="status-dot"></span>
+//             <span className="status-text">AI Companion Online</span>
+//             <div className="avatar-small">
+//               <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+//                 <circle cx="20" cy="20" r="20" fill="#2C6B6B"/>
+//                 <circle cx="20" cy="15" r="5" fill="white"/>
+//                 <path d="M12 28C12 24 15 22 20 22C25 22 28 24 28 28" stroke="white" strokeWidth="2" fill="none"/>
+//               </svg>
+//             </div>
+//           </div>
+//         </div>
+        
+//         <div className="chat-messages">
+//           {messages.map((msg, index) => (
+//             <ChatMessage key={index} sender={msg.sender} text={msg.text} />
+//           ))}
+//         </div>
+        
+//         <ChatInput onSend={handleSendMessage} />
+//       </div>
+//     </div>
+//   );
+// } 
