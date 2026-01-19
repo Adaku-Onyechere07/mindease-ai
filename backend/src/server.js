@@ -39,16 +39,7 @@ const allowedOrigins = process.env.FRONTEND_URL
   : ["http://localhost:3000", "http://localhost:5173"];
 
 app.use(cors({
-  origin: function(origin, callback) {
-    // Allow requests with no origin (mobile apps, curl, etc.)
-    if (!origin) return callback(null, true);
-    
-    if (allowedOrigins.indexOf(origin) === -1 && process.env.NODE_ENV === 'production') {
-      return callback(new Error('CORS policy violation'), false);
-    }
-    return callback(null, true);
-  },
-  credentials: true
+  origin: '*'
 }));
 
 // Body parsing middleware
