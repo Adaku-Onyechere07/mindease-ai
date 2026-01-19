@@ -5,12 +5,14 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
+    "build": "echo 'Build complete'",
     "dev": "nodemon src/server.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint src/",
     "lint:fix": "eslint src/ --fix",
-    "seed": "node src/scripts/seedResources.js"
+    "seed": "node src/scripts/seedResources.js",
+    "vercel-build": "echo 'Vercel build complete'"
   },
   "keywords": [
     "mental-health",

@@ -45,9 +45,22 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // CORS configuration
+const allowedOrigins = process.env.FRONTEND_URL 
+  ? process.env.FRONTEND_URL.split(',')
+  : ["http://localhost:3000", "http://localhost:5173"];
+
 app.use(cors({
-  origin: "*",
-  credentials: true
+  origin: '*'
+  // origin: function(origin, callback) {
+  //   // Allow requests with no origin (mobile apps, curl, etc.)
+  //   if (!origin) return callback(null, true);
+    
+  //   if (allowedOrigins.indexOf(origin) === -1 && process.env.NODE_ENV === 'production') {
+  //     return callback(new Error('CORS policy violation'), false);
+  //   }
+  //   return callback(null, true);
+  // },
+  // credentials: true
 }));
 
 // Body parsing middleware
@@ -111,7 +124,7 @@ process.on('SIGTERM', () => {
   });
 });
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => {
   logger.info(`Server running on port ${PORT}`);

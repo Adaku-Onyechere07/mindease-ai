@@ -25,7 +25,7 @@ const Login = () => {
       if (response.data.success) {
         localStorage.setItem('token', response.data.data.accessToken);
         localStorage.setItem('user', JSON.stringify(response.data.data.user));
-        navigate("/chat");
+        navigate("/home");
       }
     } catch (err) {
       console.error("Login failed:", err);
