@@ -68,27 +68,6 @@ app.use((req, res, next) => {
   next();
 });
 
-// Health check endpoint
-app.get('/health', (req, res) => {
-  res.status(200).json({
-    status: 'OK',
-    timestamp: new Date().toISOString(),
-    uptime: process.uptime()
-  });
-});
-
-// API routes
-app.use('/api/auth', authRoutes);
-app.use('/api/users', userRoutes);
-app.use('/api/chat', chatRoutes);
-app.use('/api/mood', moodRoutes);
-app.use('/api/resources', resourceRoutes);
-app.use('/api/crisis', crisisRoutes);
-app.use('/api/voice', voiceRoutes);
-
-// Error handling middleware
-app.use(errorHandler);
-
 // Database connection
 let isConnected = false;
 
@@ -116,6 +95,27 @@ app.use(async (req, res, next) => {
     res.status(500).json({ error: 'Database connection failed' });
   }
 });
+
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.status(200).json({
+    status: 'OK',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  });
+});
+
+// API routes
+app.use('/api/auth', authRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/chat', chatRoutes);
+app.use('/api/mood', moodRoutes);
+app.use('/api/resources', resourceRoutes);
+app.use('/api/crisis', crisisRoutes);
+app.use('/api/voice', voiceRoutes);
+
+// Error handling middleware
+app.use(errorHandler);
 
 // Only start server if not in serverless environment
 if (process.env.VERCEL !== '1') {
