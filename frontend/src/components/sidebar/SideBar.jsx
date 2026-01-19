@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, X, Home, MessageSquare, BookOpen, User } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import './SideBar.css';
+import './Sidebar.css';
 
 export default function Sidebar() {
   const [open, setOpen] = useState(false);
