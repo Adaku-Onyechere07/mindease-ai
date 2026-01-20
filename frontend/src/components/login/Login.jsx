@@ -80,9 +80,6 @@ const Login = () => {
         <button onClick={handleLogin} className="login-button">
           Login
         </button>
-        <button onClick={handleGuestLogin} className="guest-button">
-          Continue as Guest
-        </button>
         <div className="signup-link" style={{textAlign: 'center', marginTop: '10px', fontSize: '14px', color: '#4A7777'}}>
             Don't have an account? <Link to="/signup" style={{color: '#2C6B6B', fontWeight: '600', textDecoration: 'none'}}>Sign up</Link>
         </div>
